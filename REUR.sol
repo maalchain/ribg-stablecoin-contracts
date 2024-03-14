@@ -932,7 +932,7 @@ contract RoyalEURO is AbstractREUR, Ownable, Pausable, Blacklistable, Vault, Res
         address newBlacklister,
         address newRescuer,
         address newOwner
-    ) public {
+    ) external onlyOwner {
         require(!initialized, "Error: contract is already initialized");
         require(
             newMasterMinter != address(0),
