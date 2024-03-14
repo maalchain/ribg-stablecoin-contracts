@@ -943,6 +943,10 @@ contract RoyalEURO is AbstractREUR, Ownable, Pausable, Blacklistable, Vault, Res
             "Error: new pauser is the zero address"
         );
         require(
+            newRescuer != address(0),
+            "Error: new rescuer is the zero address"
+        );
+        require(
             newBlacklister != address(0),
             "Error: new blacklister is the zero address"
         );
