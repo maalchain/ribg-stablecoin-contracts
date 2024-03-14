@@ -931,7 +931,7 @@ contract RoyalGold is AbstractRXAU, Ownable, Pausable, Blacklistable, Vault, Res
         address newBlacklister,
         address newRescuer,
         address newOwner
-    ) public {
+    ) external onlyOwner {
         require(!initialized, "Error: contract is already initialized");
         require(
             newMasterMinter != address(0),
@@ -940,6 +940,10 @@ contract RoyalGold is AbstractRXAU, Ownable, Pausable, Blacklistable, Vault, Res
         require(
             newPauser != address(0),
             "Error: new pauser is the zero address"
+        );
+        require(
+            newRescuer != address(0),
+            "Error: new rescuer is the zero address"
         );
         require(
             newBlacklister != address(0),
