@@ -931,7 +931,7 @@ contract RoyalDollar is AbstractRoyal, Ownable, Pausable, Blacklistable, Vault, 
         address newBlacklister,
         address newRescuer,
         address newOwner
-    ) public {
+    ) external onlyOwner {
         require(!initialized, "Error: contract is already initialized");
         require(
             newMasterMinter != address(0),
@@ -940,6 +940,10 @@ contract RoyalDollar is AbstractRoyal, Ownable, Pausable, Blacklistable, Vault, 
         require(
             newPauser != address(0),
             "Error: new pauser is the zero address"
+        );
+        require(
+            newRescuer != address(0),
+            "Error: new rescuer is the zero address"
         );
         require(
             newBlacklister != address(0),
